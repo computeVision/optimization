@@ -10,11 +10,16 @@ A collection of the state-of-the-art Optimization Algorithms.
 
 Directores:
 1. Shortest Path as Linear Programming
+https://github.com/computeVision/optimization/blob/master/ocs_hw1/docs/shortest_path.png
+![Result](https://github.com/computeVision/optimization/blob/master/ocs_hw1/docs/shortest_path.png)
 2. Proves of the convexity or concavity of mathematical functions
 3. Neuronal Network
+![Result](https://github.com/computeVision/optimization/blob/master/ocs_hw3/docs/compli_algo/test_30.png)
 4. Logistic Regression
    ![Result](https://github.com/computeVision/optimization/blob/master/ocs_hw4/docs/graph.png)
 5. Shortest Path in a Labyrinth
+   ![Result](https://github.com/computeVision/optimization/blob/master/ocs_hw5/shortest_path.png)
+   ![Result](https://github.com/computeVision/optimization/blob/master/ocs_hw5/docs/energy_plot1.png)
 
 
 ## Installation
