@@ -6,13 +6,13 @@ A collection of the state-of-the-art Optimization Algorithms.
 - Constrained optimization: Karush-Kuhn-Tucker conditions, Lagrange multipliers
 - Linear programming: Simplex method, interior point methods
 
-![Build Status](https://travis-ci.org/tompollard/phd_thesis_markdown.svg?branch=master)](https://travis-ci.org/tompollard/phd_thesis_markdown)  
+[![Build Status](https://travis-ci.org/tompollard/phd_thesis_markdown.svg?branch=master)](https://travis-ci.org/tompollard/phd_thesis_markdown)  
 
 Directores:
 1. Shortest Path as Linear Programming
-https://github.com/computeVision/optimization/blob/master/ocs_hw1/docs/shortest_path.png
 ![Result](https://github.com/computeVision/optimization/blob/master/ocs_hw1/docs/shortest_path.png)
 2. Proves of the convexity or concavity of mathematical functions
+https://github.com/computeVision/optimization/blob/master/ocs_hw2/lorenz.pdf 
 3. Neuronal Network
 ![Result](https://github.com/computeVision/optimization/blob/master/ocs_hw3/docs/compli_algo/test_30.png)
 4. Logistic Regression
