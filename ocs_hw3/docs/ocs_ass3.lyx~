@@ -1,0 +1,1189 @@
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass amsart
+\begin_preamble
+%\usepackage[notcite,notref]{showkeys}%Use the showkeys package to view labels. For draft version only!
+\usepackage {url}
+\usepackage [numbers]{natbib}
+\usepackage{hyperref}
+\end_preamble
+\use_default_options false
+\begin_modules
+theorems-ams
+eqs-within-sections
+figs-within-sections
+theorems-sec
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\graphics default
+\default_output_format pdf2
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement H
+\paperfontsize 12
+\spacing single
+\use_hyperref true
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder true
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle true
+\papersize a4paper
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 3cm
+\topmargin 3cm
+\rightmargin 3cm
+\bottommargin 3cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 2
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Report Assignemnt 3
+\end_layout
+
+\begin_layout Author
+Peter LORENZ
+\end_layout
+
+\begin_layout Email
+peter.lorenz@student.tugraz.at
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\bbR}{\mathbb{R}}
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\ccR}{\mathcal{R}}
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\dlim}{\operatorname{\underrightarrow{{\rm lim}}}}
+{\underrightarrow{{\rm lim}}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\Ker}{\operatorname{\rm Ker}}
+{{\rm Ker}}
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\End}{\operatorname{\rm End}}
+{{\rm End}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\myint}[3]{\int_{#1}^{#2}\sin#3dx}
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Section
+\noindent
+
+\series bold
+Compute the gradient 
+\begin_inset Formula $\nabla L(p)$
+\end_inset
+
+ of the Loss Function.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\phi(u) & =\frac{1}{1+e^{u}}\\
+e^{c}=(p;z^{c},t^{c}) & =h(z^{c},p)-t^{c},where\,h(z^{c},(w^{s},b^{s})),\,s=1,2,\,c=1\dots C
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+L(p;z,t) & = & \frac{1}{C}\sum_{c=1}^{C}\frac{1}{2}\left\Vert e^{c}(p;z^{c},t^{c})\right\Vert ^{2}\\
+ & = & \left\Vert b^{2}+w^{2}\varphi(b^{1}+w^{1}+z^{c})-t^{c}\right\Vert ^{2}\\
+ & = & \left\Vert y-t^{c}\right\Vert ^{2}\\
+ & = & \frac{1}{2}\sqrt{\left(b_{1}^{2}+w_{1}^{2}\varphi(b^{1}+w^{1}z^{c})-t_{1}^{c})^{2}+(b_{2}^{2}+w_{2}^{2}\varphi(b^{1}+w^{1}z^{c}))^{2}\right)^{2}}\\
+ & = & \frac{1}{2}\left(b_{1}^{2}+\left(\begin{array}{cccc}
+w_{11}^{2} & w_{12}^{2} & w_{13}^{2} & w_{14}^{2}\end{array}\right)\left(\begin{array}{c}
+\varphi_{1}\\
+\varphi_{2}\\
+\varphi_{3}\\
+\varphi_{4}
+\end{array}\right)-t_{1}^{2}\right)^{2}+\\
+ & + & \left(b_{2}^{2}+\left(\begin{array}{cccc}
+w_{21}^{2} & w_{22}^{2} & w_{23}^{2} & w_{24}^{2}\end{array}\right)\left(\begin{array}{c}
+\varphi_{1}\\
+\varphi_{2}\\
+\varphi_{3}\\
+\varphi_{4}
+\end{array}\right)-t_{2}^{2}\right)^{2}\\
+ & = & \frac{1}{2}\left((e_{1}^{c})^{2}+(e_{2}^{c})^{2}\right)
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Now, we have to make derivations 
+\begin_inset Formula $\nabla_{b}L$
+\end_inset
+
+, 
+\begin_inset Formula $\nabla_{w_{1}}L$
+\end_inset
+
+, 
+\begin_inset Formula $\nabla_{b_{2}}L$
+\end_inset
+
+ and 
+\begin_inset Formula $\nabla_{w_{2}}L$
+\end_inset
+
+: 
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Formula 
+\begin{eqnarray*}
+\nabla_{b^{2}}L(p;z,t) & = & \left[\begin{array}{c}
+\frac{\partial}{\partial b_{1}^{2}}L\\
+\frac{\partial}{\partial b_{2}^{2}}L
+\end{array}\right]=\left[\begin{array}{c}
+\frac{1}{2}\cdot2\cdot e_{1}^{c}\cdot1\\
+\frac{1}{2}\cdot2\cdot e_{2}^{c}\cdot1
+\end{array}\right]=\left[\begin{array}{c}
+e_{1}^{c}\\
+e_{2}^{c}
+\end{array}\right]\\
+\nabla_{w^{2}}L(p;z,t) & = & \left[\begin{array}{ccc}
+\frac{\partial}{\partial b_{11}^{2}}L & \frac{\partial}{\partial b_{12}^{2}}L & \frac{\partial}{\partial b_{13}^{2}}L\\
+\frac{\partial}{\partial b_{21}^{2}}L & \frac{\partial}{\partial b_{22}^{2}}L & \frac{\partial}{\partial b_{23}^{2}}L
+\end{array}\right]=\left[\begin{array}{ccc}
+\frac{1}{2}\cdot2\cdot e_{1}^{c}\cdot\varphi_{1} & \frac{1}{2}\cdot2\cdot e_{1}^{c}\cdot\varphi_{2} & \frac{1}{2}\cdot2\cdot e_{1}^{c}\cdot\varphi_{3}\\
+\frac{1}{2}\cdot2\cdot e_{2}^{c}\cdot\varphi_{1} & \frac{1}{2}\cdot2\cdot e_{2}^{c}\cdot\varphi_{2} & \frac{1}{2}\cdot2\cdot e_{2}^{c}\cdot\varphi_{3}
+\end{array}\right]\\
+ & = & \left[\begin{array}{cc}
+e_{1}^{c}\cdot & \left(\begin{array}{ccc}
+\varphi_{1} & \varphi_{2} & \varphi_{3}\end{array}\right)\\
+e_{2}^{c}\cdot & \left(\begin{array}{ccc}
+\varphi_{1} & \varphi_{2} & \varphi_{3}\end{array}\right)
+\end{array}\right]=\left[\begin{array}{cc}
+e_{1}^{c} & \cdot\varphi^{T}\\
+e_{2}^{c} & \cdot\varphi^{T}
+\end{array}\right]=e\cdot\varphi^{T}\\
+\nabla_{b^{1}}L(p;z,t) & = & \left[\begin{array}{c}
+\frac{\partial}{\partial b_{1}^{1}}L\\
+\frac{\partial}{\partial b_{2}^{1}}L
+\end{array}\right]=\left[\begin{array}{ccc}
+e_{1}^{c}\cdot w_{11}^{2}\cdot\varphi_{1}^{'} & + & e_{2}^{c}\cdot w_{21}^{2}\cdot\varphi_{1}^{'}\\
+e_{1}^{c}\cdot w_{12}^{2}\cdot\varphi_{2}^{'} & + & e_{2}^{c}\cdot w_{21}^{2}\cdot\varphi_{2}^{'}\\
+e_{1}^{c}\cdot w_{13}^{2}\cdot\varphi_{3}^{'} & + & e_{2}^{c}\cdot w_{21}^{2}\cdot\varphi_{3}^{'}\\
+e_{1}^{c}\cdot w_{14}^{2}\cdot\varphi_{4}^{'} & + & e_{2}^{c}\cdot w_{21}^{2}\cdot\varphi_{4}^{'}
+\end{array}\right]=\\
+ & = & \left[\begin{array}{ccc}
+e_{1}\cdot w_{11}^{2} & + & e_{2}\cdot w_{21}^{2}\\
+e_{1}\cdot w_{12}^{2} & + & e_{2}\cdot w_{21}^{2}\\
+e_{1}\cdot w_{13}^{2} & + & e_{2}\cdot w_{21}^{2}\\
+e_{1}\cdot w_{14}^{2} & + & e_{2}\cdot w_{21}^{2}
+\end{array}\right]\circ\left[\begin{array}{c}
+\varphi_{1}^{'}\\
+\varphi_{2}^{'}\\
+\varphi_{3}^{'}\\
+\varphi_{4}^{'}
+\end{array}\right]=\left[\left(w^{2}\right)^{T}\cdot e^{c}\right]\circ\varphi^{'}
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+\nabla_{w^{1}}L(p;z,t) & = & \left[\begin{array}{ccc}
+\frac{\partial}{\partial w_{11}^{1}}L & \frac{\partial}{\partial w_{12}^{1}}L & \frac{\partial}{\partial w_{13}^{1}}L\\
+\frac{\partial}{\partial w_{21}^{1}}L & \frac{\partial}{\partial w_{22}^{1}}L & \frac{\partial}{\partial w_{23}^{1}}L\\
+\frac{\partial}{\partial w_{31}^{1}}L & \frac{\partial}{\partial w_{32}^{1}}L & \frac{\partial}{\partial w_{33}^{1}}L\\
+\frac{\partial}{\partial w_{41}^{1}}L & \frac{\partial}{\partial w_{42}^{1}}L & \frac{\partial}{\partial w_{43}^{1}}L
+\end{array}\right]=\left[\begin{array}{c}
+(w_{1}e)(\begin{array}{ccc}
+z_{1} & z_{2} & z_{3}\end{array})\\
+(w_{2}e)(\begin{array}{ccc}
+z_{1} & z_{2} & z_{3}\end{array})\\
+(w_{3}e)(\begin{array}{ccc}
+z_{1} & z_{2} & z_{3}\end{array})\\
+(w_{4}e)(\begin{array}{ccc}
+z_{1} & z_{2} & z_{3}\end{array})
+\end{array}\right]\circ\varphi^{'}=\left(\right)\circ\varphi^{'}\\
+Auxilery\;Calculation: &  & (Please,\;do\;not\;try\;this\;at\;home!)\\
+\frac{\partial}{\partial w_{11}^{1}}L & = & \frac{1}{2}\left(2\left(e_{1}\cdot w_{11}^{2}\cdot\varphi_{1}^{'}\cdot1\cdot z_{1}^{c}\right)+2\cdot\left(e_{2}\cdot w_{21}^{2}\cdot\varphi_{1}^{'}\cdot1\cdot z_{1}^{c}\right)\right)\\
+ & = & e_{1}\cdot w_{11}^{2}\cdot\varphi_{1}^{'}\cdot z_{1}^{c}+e_{2}\cdot w_{21}^{2}\cdot\varphi_{1}^{'}\cdot z_{1}^{c}=\left[e_{1}\cdot w_{11}^{2}+e_{2}\cdot w_{21}^{2}\right]\cdot\varphi_{1}^{'}z_{1}^{c}\\
+\frac{\partial}{\partial w_{12}^{1}}L & = & e_{1}\cdot w_{11}^{2}\cdot\varphi_{1}^{'}\cdot z_{2}^{c}+e_{2}\cdot w_{21}^{2}\cdot\varphi_{1}^{'}\cdot z_{2}^{c}=\left[e_{1}\cdot w_{11}^{2}+e_{2}\cdot w_{21}^{2}\right]\cdot\varphi_{1}^{'}z_{2}^{c}\\
+\frac{\partial}{\partial w_{13}^{1}}L & = & e_{1}\cdot w_{11}^{2}\cdot\varphi_{1}^{'}\cdot z_{3}^{c}+e_{2}\cdot w_{21}^{2}\cdot\varphi_{1}^{'}\cdot z_{3}^{c}=\left[e_{1}\cdot w_{11}^{2}+e_{2}\cdot w_{21}^{2}\right]\cdot\varphi_{1}^{'}z_{3}^{c}\\
+\frac{\partial}{\partial w_{21}^{1}}L & = & e_{1}\cdot w_{12}^{2}\cdot\varphi_{2}^{'}\cdot z_{1}^{c}+e_{2}\cdot w_{22}^{2}\cdot\varphi_{2}^{'}\cdot z_{1}^{c}=\left[e_{1}\cdot w_{12}^{2}+e_{2}\cdot w_{22}^{2}\right]\cdot\varphi_{2}^{'}z_{1}^{c}\\
+\frac{\partial}{\partial w_{22}^{1}}L & = & e_{1}\cdot w_{12}^{2}\cdot\varphi_{2}^{'}\cdot z_{2}^{c}+e_{2}\cdot w_{22}^{2}\cdot\varphi_{2}^{'}\cdot z_{2}^{c}=\left[e_{1}\cdot w_{12}^{2}+e_{2}\cdot w_{22}^{2}\right]\cdot\varphi_{2}^{'}z_{2}^{c}\\
+\frac{\partial}{\partial w_{23}^{1}}L & = & e_{1}\cdot w_{12}^{2}\cdot\varphi_{2}^{'}\cdot z_{3}^{c}+e_{2}\cdot w_{22}^{2}\cdot\varphi_{2}^{'}\cdot z_{3}^{c}=\left[e_{1}\cdot w_{12}^{2}+e_{2}\cdot w_{22}^{2}\right]\cdot\varphi_{2}^{'}z_{3}^{c}\\
+\frac{\partial}{\partial w_{31}^{1}}L & = & e_{1}\cdot w_{13}^{2}\cdot\varphi_{3}^{'}\cdot z_{1}^{c}+e_{2}\cdot w_{23}^{2}\cdot\varphi_{3}^{'}\cdot z_{1}^{c}=\left[e_{1}\cdot w_{13}^{2}+e_{2}\cdot w_{23}^{2}\right]\cdot\varphi_{3}^{'}z_{1}^{c}\\
+\frac{\partial}{\partial w_{32}^{1}}L & = & e_{1}\cdot w_{13}^{2}\cdot\varphi_{3}^{'}\cdot z_{2}^{c}+e_{2}\cdot w_{23}^{2}\cdot\varphi_{3}^{'}\cdot z_{2}^{c}=\left[e_{1}\cdot w_{13}^{2}+e_{2}\cdot w_{23}^{2}\right]\cdot\varphi_{3}^{'}z_{2}^{c}\\
+\frac{\partial}{\partial w_{33}^{1}}L & = & e_{1}\cdot w_{13}^{2}\cdot\varphi_{3}^{'}\cdot z_{3}^{c}+e_{2}\cdot w_{23}^{2}\cdot\varphi_{3}^{'}\cdot z_{3}^{c}=\left[e_{1}\cdot w_{13}^{2}+e_{2}\cdot w_{23}^{2}\right]\cdot\varphi_{3}^{'}z_{3}^{c}\\
+\frac{\partial}{\partial w_{41}^{1}}L & = & e_{1}\cdot w_{14}^{2}\cdot\varphi_{4}^{'}\cdot z_{1}^{c}+e_{2}\cdot w_{24}^{2}\cdot\varphi_{4}^{'}\cdot z_{1}^{c}=\left[e_{1}\cdot w_{14}^{2}+e_{2}\cdot w_{24}^{2}\right]\cdot\varphi_{4}^{'}z_{1}^{c}\\
+\frac{\partial}{\partial w_{42}^{1}}L & = & e_{1}\cdot w_{14}^{2}\cdot\varphi_{4}^{'}\cdot z_{2}^{c}+e_{2}\cdot w_{24}^{2}\cdot\varphi_{4}^{'}\cdot z_{2}^{c}=\left[e_{1}\cdot w_{14}^{2}+e_{2}\cdot w_{24}^{2}\right]\cdot\varphi_{4}^{'}z_{2}^{c}\\
+\frac{\partial}{\partial w_{43}^{1}}L & = & e_{1}\cdot w_{14}^{2}\cdot\varphi_{4}^{'}\cdot z_{3}^{c}+e_{2}\cdot w_{24}^{2}\cdot\varphi_{4}^{'}\cdot z_{3}^{c}=\left[e_{1}\cdot w_{14}^{2}+e_{2}\cdot w_{24}^{2}\right]\cdot\varphi_{4}^{'}z_{3}^{c}
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+\noindent
+
+\series bold
+What could be the stopping Criteria?
+\end_layout
+
+\begin_layout Section
+\noindent
+
+\series bold
+Validate the trained network on the test set.
+ Report the loss (eq.
+ 4) on the training set as well as on the test set in your Report.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "45col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename simple_algo/figure_3.png
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Simple 
+\begin_inset Formula $d^{k}$
+\end_inset
+
+: Training Set
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "45col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename simple_algo/figure_3.png
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Simple 
+\begin_inset Formula $d^{k}$
+\end_inset
+
+: Test Set
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+\noindent
+
+\series bold
+Investigate the different Possibilities for computing the descent direction
+ 
+\begin_inset Formula $d^{k}$
+\end_inset
+
+.
+ Which one performs better? Include your Findings.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "45col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename simple_algo/figure_3.png
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Simple 
+\begin_inset Formula $d^{k}$
+\end_inset
+
+: Training Set
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "45col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename simple_algo/figure_3.png
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Simple 
+\begin_inset Formula $d^{k}$
+\end_inset
+
+: Test Set
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "45col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename simple_algo/figure_3.png
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Complicated 
+\begin_inset Formula $d^{k}$
+\end_inset
+
+: Training Set
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "45col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename simple_algo/figure_3.png
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Complicated 
+\begin_inset Formula $d^{k}$
+\end_inset
+
+: Test Set
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+\noindent
+
+\series bold
+Run the better algrithm with different numbers of units in the hidden layer
+ (e.g.
+ 3, 5, 15, 25).
+ What do you find?
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "45col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename simple_algo/figure_3.png
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Training Set
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "45col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename simple_algo/figure_3.png
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Test Set
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "45col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename simple_algo/figure_3.png
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Training Set, HU = 3
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "45col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename simple_algo/figure_3.png
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Test Set, HU = 3
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "45col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename simple_algo/figure_3.png
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Training Set, HU = 5
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "45col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename simple_algo/figure_3.png
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Test Set, HU = 5
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "45col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename simple_algo/figure_3.png
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Training Set, HU = 15
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "45col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename simple_algo/figure_3.png
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Test Set, , HU = 15
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "45col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename simple_algo/figure_3.png
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Training Set, HU = 25
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "45col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename simple_algo/figure_3.png
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Test Set, HU = 25
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

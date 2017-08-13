@@ -1,0 +1,812 @@
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 2cm
+\topmargin 2cm
+\rightmargin 2cm
+\bottommargin 2cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Assignment 3
+\end_layout
+
+\begin_layout Author
+Peter LORENZ
+\end_layout
+
+\begin_layout Section
+\noindent
+
+\series bold
+Compute the gradient 
+\begin_inset Formula $\nabla L(p)$
+\end_inset
+
+ of the Loss Function.
+\end_layout
+
+\begin_layout Standard
+It is given: 
+\begin_inset Formula $\phi(u)=\frac{1}{1+e^{u}}$
+\end_inset
+
+, and 
+\begin_inset Formula $e^{c}=(p;z^{c},t^{c})=h(z^{c},p)-t^{c}$
+\end_inset
+
+, where 
+\begin_inset Formula $h(z^{c},(w^{s},b^{s}))$
+\end_inset
+
+, 
+\begin_inset Formula $s=1,2$
+\end_inset
+
+, 
+\begin_inset Formula $c=1\dots C$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+L(p;z,t) & = & \frac{1}{C}\sum_{c=1}^{C}\frac{1}{2}\left\Vert e^{c}(p;z^{c},t^{c})\right\Vert ^{2}\\
+ & = & \left\Vert b^{2}+w^{2}\varphi(b^{1}+w^{1}+z^{c})-t^{c}\right\Vert ^{2}\\
+ & = & \left\Vert y-t^{c}\right\Vert ^{2}\\
+ & = & \frac{1}{2}\sqrt{\left(b_{1}^{2}+w_{1}^{2}\varphi(b^{1}+w^{1}z^{c})-t_{1}^{c})^{2}+(b_{2}^{2}+w_{2}^{2}\varphi(b^{1}+w^{1}z^{c}))^{2}\right)^{2}}\\
+ & = & \frac{1}{2}\left(b_{1}^{2}+\left(\begin{array}{cccc}
+w_{11}^{2} & w_{12}^{2} & w_{13}^{2} & w_{14}^{2}\end{array}\right)\left(\begin{array}{c}
+\varphi_{1}\\
+\varphi_{2}\\
+\varphi_{3}\\
+\varphi_{4}
+\end{array}\right)-t_{1}^{2}\right)^{2}+\\
+ & + & \frac{1}{2}\left(b_{2}^{2}+\left(\begin{array}{cccc}
+w_{21}^{2} & w_{22}^{2} & w_{23}^{2} & w_{24}^{2}\end{array}\right)\left(\begin{array}{c}
+\varphi_{1}\\
+\varphi_{2}\\
+\varphi_{3}\\
+\varphi_{4}
+\end{array}\right)-t_{2}^{2}\right)^{2}\\
+ & = & \underline{\frac{1}{2}\left((e_{1}^{c})^{2}+(e_{2}^{c})^{2}\right)}
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Now, we have to make derivations 
+\begin_inset Formula $\nabla_{b}L$
+\end_inset
+
+, 
+\begin_inset Formula $\nabla_{w_{1}}L$
+\end_inset
+
+, 
+\begin_inset Formula $\nabla_{b_{2}}L$
+\end_inset
+
+ and 
+\begin_inset Formula $\nabla_{w_{2}}L$
+\end_inset
+
+: 
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Formula 
+\begin{eqnarray*}
+\nabla_{b^{2}}L(p;z,t) & = & \left[\begin{array}{c}
+\frac{\partial}{\partial b_{1}^{2}}L\\
+\frac{\partial}{\partial b_{2}^{2}}L
+\end{array}\right]=\left[\begin{array}{c}
+\frac{1}{2}\cdot2\cdot e_{1}^{c}\cdot1\\
+\frac{1}{2}\cdot2\cdot e_{2}^{c}\cdot1
+\end{array}\right]=\underline{\left[\begin{array}{c}
+e_{1}^{c}\\
+e_{2}^{c}
+\end{array}\right]}\\
+\nabla_{w^{2}}L(p;z,t) & = & \left[\begin{array}{ccc}
+\frac{\partial}{\partial b_{11}^{2}}L & \frac{\partial}{\partial b_{12}^{2}}L & \frac{\partial}{\partial b_{13}^{2}}L\\
+\frac{\partial}{\partial b_{21}^{2}}L & \frac{\partial}{\partial b_{22}^{2}}L & \frac{\partial}{\partial b_{23}^{2}}L
+\end{array}\right]=\left[\begin{array}{ccc}
+\frac{1}{2}\cdot2\cdot e_{1}^{c}\cdot\varphi_{1} & \frac{1}{2}\cdot2\cdot e_{1}^{c}\cdot\varphi_{2} & \frac{1}{2}\cdot2\cdot e_{1}^{c}\cdot\varphi_{3}\\
+\frac{1}{2}\cdot2\cdot e_{2}^{c}\cdot\varphi_{1} & \frac{1}{2}\cdot2\cdot e_{2}^{c}\cdot\varphi_{2} & \frac{1}{2}\cdot2\cdot e_{2}^{c}\cdot\varphi_{3}
+\end{array}\right]\\
+ & = & \left[\begin{array}{cc}
+e_{1}^{c}\cdot & \left(\begin{array}{ccc}
+\varphi_{1} & \varphi_{2} & \varphi_{3}\end{array}\right)\\
+e_{2}^{c}\cdot & \left(\begin{array}{ccc}
+\varphi_{1} & \varphi_{2} & \varphi_{3}\end{array}\right)
+\end{array}\right]=\left[\begin{array}{cc}
+e_{1}^{c} & \cdot\varphi^{T}\\
+e_{2}^{c} & \cdot\varphi^{T}
+\end{array}\right]=\underline{e\cdot\varphi^{T}}\\
+\nabla_{b^{1}}L(p;z,t) & = & \left[\begin{array}{c}
+\frac{\partial}{\partial b_{1}^{1}}L\\
+\frac{\partial}{\partial b_{2}^{1}}L
+\end{array}\right]=\left[\begin{array}{ccc}
+e_{1}^{c}\cdot w_{11}^{2}\cdot\varphi_{1}^{'} & + & e_{2}^{c}\cdot w_{21}^{2}\cdot\varphi_{1}^{'}\\
+e_{1}^{c}\cdot w_{12}^{2}\cdot\varphi_{2}^{'} & + & e_{2}^{c}\cdot w_{21}^{2}\cdot\varphi_{2}^{'}\\
+e_{1}^{c}\cdot w_{13}^{2}\cdot\varphi_{3}^{'} & + & e_{2}^{c}\cdot w_{21}^{2}\cdot\varphi_{3}^{'}\\
+e_{1}^{c}\cdot w_{14}^{2}\cdot\varphi_{4}^{'} & + & e_{2}^{c}\cdot w_{21}^{2}\cdot\varphi_{4}^{'}
+\end{array}\right]=\\
+ & = & \left[\begin{array}{ccc}
+e_{1}\cdot w_{11}^{2} & + & e_{2}\cdot w_{21}^{2}\\
+e_{1}\cdot w_{12}^{2} & + & e_{2}\cdot w_{21}^{2}\\
+e_{1}\cdot w_{13}^{2} & + & e_{2}\cdot w_{21}^{2}\\
+e_{1}\cdot w_{14}^{2} & + & e_{2}\cdot w_{21}^{2}
+\end{array}\right]\circ\left[\begin{array}{c}
+\varphi_{1}^{'}\\
+\varphi_{2}^{'}\\
+\varphi_{3}^{'}\\
+\varphi_{4}^{'}
+\end{array}\right]=\underline{\left[\left(w^{2}\right)^{T}\cdot e^{c}\right]\circ\varphi^{'}}
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+\nabla_{w^{1}}L(p;z,t) & = & \left[\begin{array}{ccc}
+\frac{\partial}{\partial w_{11}^{1}}L & \frac{\partial}{\partial w_{12}^{1}}L & \frac{\partial}{\partial w_{13}^{1}}L\\
+\frac{\partial}{\partial w_{21}^{1}}L & \frac{\partial}{\partial w_{22}^{1}}L & \frac{\partial}{\partial w_{23}^{1}}L\\
+\frac{\partial}{\partial w_{31}^{1}}L & \frac{\partial}{\partial w_{32}^{1}}L & \frac{\partial}{\partial w_{33}^{1}}L\\
+\frac{\partial}{\partial w_{41}^{1}}L & \frac{\partial}{\partial w_{42}^{1}}L & \frac{\partial}{\partial w_{43}^{1}}L
+\end{array}\right]=\left[\begin{array}{c}
+(w_{1}e)(\begin{array}{ccc}
+z_{1} & z_{2} & z_{3}\end{array})\\
+(w_{2}e)(\begin{array}{ccc}
+z_{1} & z_{2} & z_{3}\end{array})\\
+(w_{3}e)(\begin{array}{ccc}
+z_{1} & z_{2} & z_{3}\end{array})\\
+(w_{4}e)(\begin{array}{ccc}
+z_{1} & z_{2} & z_{3}\end{array})
+\end{array}\right]\circ\varphi^{'}=\underline{\left(\left(\left(w^{2}\right)e\right)z^{T}\right)\circ\varphi^{'}}
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Auxilery Calculation: (Please, do not try this at home!)
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset Formula 
+\begin{eqnarray*}
+\frac{\partial}{\partial w_{11}^{1}}L & = & \frac{1}{2}\left(2\left(e_{1}\cdot w_{11}^{2}\cdot\varphi_{1}^{'}\cdot1\cdot z_{1}^{c}\right)+2\cdot\left(e_{2}\cdot w_{21}^{2}\cdot\varphi_{1}^{'}\cdot1\cdot z_{1}^{c}\right)\right)=\\
+ &  & e_{1}\cdot w_{11}^{2}\cdot\varphi_{1}^{'}\cdot z_{1}^{c}+e_{2}\cdot w_{21}^{2}\cdot\varphi_{1}^{'}\cdot z_{1}^{c}=\left[e_{1}\cdot w_{11}^{2}+e_{2}\cdot w_{21}^{2}\right]\cdot\varphi_{1}^{'}z_{1}^{c}
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset Formula 
+\begin{eqnarray*}
+\frac{\partial}{\partial w_{12}^{1}}L & = & e_{1}\cdot w_{11}^{2}\cdot\varphi_{1}^{'}\cdot z_{2}^{c}+e_{2}\cdot w_{21}^{2}\cdot\varphi_{1}^{'}\cdot z_{2}^{c}=\left[e_{1}\cdot w_{11}^{2}+e_{2}\cdot w_{21}^{2}\right]\cdot\varphi_{1}^{'}z_{2}^{c}\\
+\frac{\partial}{\partial w_{13}^{1}}L & = & e_{1}\cdot w_{11}^{2}\cdot\varphi_{1}^{'}\cdot z_{3}^{c}+e_{2}\cdot w_{21}^{2}\cdot\varphi_{1}^{'}\cdot z_{3}^{c}=\left[e_{1}\cdot w_{11}^{2}+e_{2}\cdot w_{21}^{2}\right]\cdot\varphi_{1}^{'}z_{3}^{c}
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset Formula 
+\begin{eqnarray*}
+\frac{\partial}{\partial w_{21}^{1}}L & = & e_{1}\cdot w_{12}^{2}\cdot\varphi_{2}^{'}\cdot z_{1}^{c}+e_{2}\cdot w_{22}^{2}\cdot\varphi_{2}^{'}\cdot z_{1}^{c}=\left[e_{1}\cdot w_{12}^{2}+e_{2}\cdot w_{22}^{2}\right]\cdot\varphi_{2}^{'}z_{1}^{c}\\
+\frac{\partial}{\partial w_{22}^{1}}L & = & e_{1}\cdot w_{12}^{2}\cdot\varphi_{2}^{'}\cdot z_{2}^{c}+e_{2}\cdot w_{22}^{2}\cdot\varphi_{2}^{'}\cdot z_{2}^{c}=\left[e_{1}\cdot w_{12}^{2}+e_{2}\cdot w_{22}^{2}\right]\cdot\varphi_{2}^{'}z_{2}^{c}\\
+\frac{\partial}{\partial w_{23}^{1}}L & = & e_{1}\cdot w_{12}^{2}\cdot\varphi_{2}^{'}\cdot z_{3}^{c}+e_{2}\cdot w_{22}^{2}\cdot\varphi_{2}^{'}\cdot z_{3}^{c}=\left[e_{1}\cdot w_{12}^{2}+e_{2}\cdot w_{22}^{2}\right]\cdot\varphi_{2}^{'}z_{3}^{c}
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset Formula 
+\begin{eqnarray*}
+\frac{\partial}{\partial w_{31}^{1}}L & = & e_{1}\cdot w_{13}^{2}\cdot\varphi_{3}^{'}\cdot z_{1}^{c}+e_{2}\cdot w_{23}^{2}\cdot\varphi_{3}^{'}\cdot z_{1}^{c}=\left[e_{1}\cdot w_{13}^{2}+e_{2}\cdot w_{23}^{2}\right]\cdot\varphi_{3}^{'}z_{1}^{c}\\
+\frac{\partial}{\partial w_{32}^{1}}L & = & e_{1}\cdot w_{13}^{2}\cdot\varphi_{3}^{'}\cdot z_{2}^{c}+e_{2}\cdot w_{23}^{2}\cdot\varphi_{3}^{'}\cdot z_{2}^{c}=\left[e_{1}\cdot w_{13}^{2}+e_{2}\cdot w_{23}^{2}\right]\cdot\varphi_{3}^{'}z_{2}^{c}\\
+\frac{\partial}{\partial w_{33}^{1}}L & = & e_{1}\cdot w_{13}^{2}\cdot\varphi_{3}^{'}\cdot z_{3}^{c}+e_{2}\cdot w_{23}^{2}\cdot\varphi_{3}^{'}\cdot z_{3}^{c}=\left[e_{1}\cdot w_{13}^{2}+e_{2}\cdot w_{23}^{2}\right]\cdot\varphi_{3}^{'}z_{3}^{c}
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset Formula 
+\begin{eqnarray*}
+\frac{\partial}{\partial w_{41}^{1}}L & = & e_{1}\cdot w_{14}^{2}\cdot\varphi_{4}^{'}\cdot z_{1}^{c}+e_{2}\cdot w_{24}^{2}\cdot\varphi_{4}^{'}\cdot z_{1}^{c}=\left[e_{1}\cdot w_{14}^{2}+e_{2}\cdot w_{24}^{2}\right]\cdot\varphi_{4}^{'}z_{1}^{c}\\
+\frac{\partial}{\partial w_{42}^{1}}L & = & e_{1}\cdot w_{14}^{2}\cdot\varphi_{4}^{'}\cdot z_{2}^{c}+e_{2}\cdot w_{24}^{2}\cdot\varphi_{4}^{'}\cdot z_{2}^{c}=\left[e_{1}\cdot w_{14}^{2}+e_{2}\cdot w_{24}^{2}\right]\cdot\varphi_{4}^{'}z_{2}^{c}\\
+\frac{\partial}{\partial w_{43}^{1}}L & = & e_{1}\cdot w_{14}^{2}\cdot\varphi_{4}^{'}\cdot z_{3}^{c}+e_{2}\cdot w_{24}^{2}\cdot\varphi_{4}^{'}\cdot z_{3}^{c}=\left[e_{1}\cdot w_{14}^{2}+e_{2}\cdot w_{24}^{2}\right]\cdot\varphi_{4}^{'}z_{3}^{c}
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Formula $\circ$
+\end_inset
+
+ This symbol means: 
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+https://en.wikipedia.org/wiki/Hadamard_product_(matrices)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+\noindent
+
+\series bold
+What could be the stopping Criteria?
+\end_layout
+
+\begin_layout Standard
+I have implemented two kind of stopping criterion:
+\end_layout
+
+\begin_layout Enumerate
+current_error - train_error 
+\begin_inset Formula $<10e-8$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\left\Vert d^{k}-d^{k+1}\right\Vert ^{2}=\left\Vert \alpha\cdot d^{k}\right\Vert ^{2}<10e-8$
+\end_inset
+
+ (this one was suggested in the UE hour)
+\end_layout
+
+\begin_layout Standard
+Note: 
+\begin_inset Formula $10e-8$
+\end_inset
+
+ is just a placeholder and can be variable according to each count of hidden
+ neurons.
+\end_layout
+
+\begin_layout Section
+\noindent
+
+\series bold
+Report the loss (eq.
+ 4) on the training set as well as on the test set.
+\end_layout
+
+\begin_layout Standard
+I saved the loss in txt files, in the directory 
+\begin_inset Quotes eld
+\end_inset
+
+report/simple_algo/
+\begin_inset Quotes erd
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+\noindent
+Simple Algorithm:
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset Tabular
+<lyxtabular version="3" rows="5" columns="3">
+<features tabularvalignment="middle">
+<column alignment="left" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Hidden Units
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Training
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Test Set
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.09290453992
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.124218595812
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.09019591330
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.141352647565
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+15
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.10264507422
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.123082317606
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+25
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.16950097952
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.287452065718
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+The average error of the training set shows up a linear increasing and the
+ test set shows an increasing of the error, as well.
+\end_layout
+
+\begin_layout Section
+\noindent
+
+\series bold
+Investigate the different possibilities for computing the descent direction
+ 
+\begin_inset Formula $d^{k}$
+\end_inset
+
+.
+ Which one performs better?
+\end_layout
+
+\begin_layout Standard
+\noindent
+The simple algorithm shows up little difference between training and testing
+ error, except of the last line, where it seems to be overfitted.
+ The gauss newton method shows more or less little error differences, but
+ the last line is more close to each other.
+ I cannot really state that which one performs better, but the gauss newton
+ converges faster.
+  
+\end_layout
+
+\begin_layout Section
+\noindent
+
+\series bold
+Run the better algorithm with different numbers of units in the hidden layer
+ (e.g.
+ 3, 5, 15, 25) (hidden units).
+ What do you find?
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="5" columns="3">
+<features tabularvalignment="middle">
+<column alignment="left" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Hidden Units
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Training
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Test Set
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.17912691741
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.222413742791 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.15996384268
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.156167594273
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+15
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.18566526823
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.143968071313
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+25
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.25700683902
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.286701007958
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+Compared to the simple algorithm the gauss newton algorithm does not show
+ linear increasing and decreasing.
+ 
+\end_layout
+
+\end_body
+\end_document

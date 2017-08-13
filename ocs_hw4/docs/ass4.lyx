@@ -1,0 +1,327 @@
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\begin_preamble
+\setcounter{enumi}{3}
+\end_preamble
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 2cm
+\topmargin 2cm
+\rightmargin 2cm
+\bottommargin 2cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Assignment 4
+\end_layout
+
+\begin_layout Author
+Peter LORENZ
+\end_layout
+
+\begin_layout Standard
+\noindent
+
+\series bold
+Task
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+2
+\series bold
+ appended to the end.
+ 
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+5
+\series bold
+ Choose a suitable regularization parameter a > 0.
+ Find for each algorithm a fixed stepsize 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ such that the optimization converges.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+After trying some different 
+\begin_inset Formula $a$
+\end_inset
+
+.
+ I think 
+\begin_inset Formula $0.1$
+\end_inset
+
+ matches best, where a good equilibrium between over- and underfitting can
+ be found.
+ The alphas for alpha = {steepest, newton, nesterov} = {0.01, 0.1, 0.01}.
+ I started with 10e-* for each alpha and then changed the alpha for better
+ results for one and the same data points.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+6 
+\series bold
+During the iterations, store the values 
+\begin_inset Formula $f(p^{k})-f^{*}$
+\end_inset
+
+ as well as 
+\begin_inset Formula $\left\Vert p^{k}-p^{*}\right\Vert $
+\end_inset
+
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+.
+ 
+\family default
+\series bold
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+At the end, plot the data.
+ What do you find? How does the Nesterov compare to steepest descent in
+ terms of convergence speed?
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\noindent
+Nesterov's performance was best by comparing all three algorithms.
+ Sometimes the Newtons methods gets very close to the Nesterov's performance.
+ In my stopping critera, I took a epslion, which works best for me with
+ the value 0.01.
+ If it is a very smaller number, Nesterov needs a lot more iterations (hundreds)
+ to stop.
+ It gains a good result, but maybe it could achieved by less iterations.
+ So I tried with bigger epsilon.
+ If it is too big, Nesterov stops to early.
+ 
+\end_layout
+
+\begin_layout Standard
+First, the variable 
+\begin_inset Formula $a$
+\end_inset
+
+ I have chosen 2, which it does not seem to work well, because no output
+ is shown after some few minutes.
+ I changed it to 1.4 and it shows up very fast a result.
+ 
+\begin_inset Formula $p$
+\end_inset
+
+ varies a bit and a I decided to make it smaller until I took 0.1 where the
+ result looks good in the end and 
+\begin_inset Formula $p$
+\end_inset
+
+ is closer.
+ 
+\end_layout
+
+\begin_layout Standard
+The Steepest Descent method is twice slower than the Newton's method and
+ the Newton's method is twice slower than the Nesterov's method.
+ After counting the iterations shown underneath.
+ 
+\end_layout
+
+\begin_layout Standard
+\align left
+\begin_inset CommandInset include
+LatexCommand verbatiminput
+filename "/home/jester/Dropbox/Programming/PycharmProjects/optimization/ocs_hw4/tmp.txt"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename graph.png
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Graph
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+7 
+\series bold
+Generate new test examples from the same Gaussian distributions and evaluate
+ the classification error.
+\end_layout
+
+\begin_deeper
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Confustion Matrix 
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+https://en.wikipedia.org/wiki/Confusion_matrix
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+Above, I appented the iterations and the confusion matrix.
+ The confusion matrix shows up in the main diagonal the True Positives where
+ prediction and actual is the same.
+ The others shows the false classifications.
+ 
+\end_layout
+
+\begin_layout Standard
+All three methods show up the pretty close classification results in the
+ end.
+\end_layout
+
+\end_deeper
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\end_layout
+
+\end_body
+\end_document
