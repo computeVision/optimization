@@ -13,6 +13,7 @@ Directores:
 2. Proves of the convexity or concavity of mathematical functions
 3. Neuronal Network
 4. Logistic Regression
+   [Result](https://github.com/computeVision/optimization/blob/master/ocs_hw4/docs/graph.png)
 5. Shortest Path in a Labyrinth
 
 
