@@ -1,5 +1,5 @@
 # Optimization
-A collection of the state-of-the-art Optimization Algorithms.
+A collection of Optimization Algorithms.
 	
 - Mathematical foundations of optimization: Optimization problems, local/global minima, optimality conditions, convexity
 - Unconstrained optimization: gradient descent, conjugate gradients, Newton's method, quasi-Newton methods
